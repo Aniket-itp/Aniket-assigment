@@ -1,1 +1,63 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: VPC_creation_stack
 
+Resources:
+  MyVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.21.0/16
+      Tags:
+        - Key: Name
+          Value: Aniket-vpc
+        - Key: Owner
+          Value: aniket.tripathi@intuitive.cloud
+
+    
+  PUBLICSUBNET1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref MyVPC
+      CidrBlock: 10.0.24.0/24
+      Tags:
+        - Key: Name
+          Value: PUBLICSUBNET1
+        - Key: Owner
+          Value: aniket.tripathi@intuitive.cloud
+
+  PUBLICSUBNET2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref MyVPC
+      CidrBlock: 10.0.25.0/24
+      Tags:
+       - Key: Name
+         Value: PUBLICSUBNET2
+       - Key: Owner
+         Value: aniket.tripathi@intuitive.cloud
+
+  PRIVATESUBNET1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref MyVPC
+      CidrBlock: 10.0.26.0/24
+      Tags:
+       - Key: Name
+         Value: PRIVATESUBNET1
+       - Key: Owner
+         Value: aniket.tripathi@intuitive.cloud
+
+  PRIVATESUBNET2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref MyVPC
+      CidrBlock: 10.0.27.0/24
+      Tags:
+        - Key: Name
+          Value: PRIVATESUBNET2
+        - Key: Owner
+          Value: aniket.tripathi@intuitive.cloud
+
+Outputs:
+  MyVPC: 
+    Description: Vpc craeted with subnets!
+    Value: !Ref MyVPC
